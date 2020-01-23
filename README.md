@@ -1,4 +1,4 @@
-# {{ template.lambda_name }}
+# infra-template
 
 This is a [Cookiecutter](https://github.com/audreyr/cookiecutter) template to create a Serverless App based on Serverless Application Model (SAM) and Go.
 
