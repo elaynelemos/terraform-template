@@ -1,0 +1,7 @@
+{
+  "project_name": "my-terraform-aws",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+  "github_user": "flow-lab",
+  "aws_region": "eu-north-1",
+  "terraform_state_s3": "flowlab-dev-terraform-state"
+}
