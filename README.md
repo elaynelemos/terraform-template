@@ -1,4 +1,4 @@
-# infra-template
+# terraform-template
 
 This is a [Cookiecutter](https://github.com/audreyr/cookiecutter) template to create a Terraform infrastructure project.
 
