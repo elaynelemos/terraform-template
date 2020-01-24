@@ -47,8 +47,10 @@ Option | Description
 ------------------------------------------------- | ---------------------------------------------------------------------------------
 `project_name`       | Project name
 `project_slug`       | Project slug
+`project_description`| Short project description
 `aws_region`         | The aws region for deployment
 `terraform_state_s3` | The terraform state s3 bucket
+`terraform_version`  | The version of Terraform
 
 License
 -------

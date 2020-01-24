@@ -3,5 +3,6 @@
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
   "project_description": "This is a _Terraform_ infrastructure",
   "aws_region": "eu-north-1",
-  "terraform_state_s3": "flowlab-dev-terraform-state"
+  "terraform_state_s3": "flowlab-dev-terraform-state",
+  "terraform_version": "0.12.20"
 }
