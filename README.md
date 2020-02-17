@@ -37,7 +37,7 @@ $ git remote add origin git@github.com:<github-user>/<project-name>.git
 $ git add . && git commit -m 'Initial commit' && git push origin master
 ```
 
-To update existing project run `cookiecutter gh:flow-lab/infra-template -f --replay`.
+To update existing project run `cookiecutter gh:flow-lab/terraform-template -f --replay`.
 
 **NOTE**: After you understand how cookiecutter works (cookiecutter.json, mainly), you can fork this repo and apply your own mechanisms to accelerate your development process and this can be followed for any programming language and OS.
 
