@@ -24,7 +24,7 @@ Install `cookiecutter` command line:
 
 ## Usage
 
-Generate a new Terraform infrastructure project: `cookiecutter gh:flow-lab/infra-template` (or if you want to authenticate with ssh: `cookiecutter git+ssh://git@github.com/flow-lab/infra-template).
+Generate a new Terraform infrastructure project: `cookiecutter gh:flow-lab/terraform-template` (or if you want to authenticate with ssh: `cookiecutter git+ssh://git@github.com/flow-lab/-template).
 
 You'll be prompted a few questions to help this cookiecutter template to scaffold this project and after its completed you should see a new folder at your current path with the name of the project you gave as input.
 
