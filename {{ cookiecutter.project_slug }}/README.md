@@ -14,11 +14,10 @@ Below is a brief explanation of what we have generated for you using [infra temp
 
 ## Requirements
 
-Terraform s3 state bucket has to be allready created.
+Terraform s3 state bucket has to be already created.
 
 [GitHub Actions](./github/workflows/) requires GitHub Secrets for the project:
 
-* GITHUB_TOKEN - comment on Pull Request
 * AWS_ACCESS_KEY_ID - service user key id
 * AWS_SECRET_ACCESS_KEY - service user access key
 

@@ -1,4 +1,4 @@
-# infra-template
+# terraform-template
 
 This is a [Cookiecutter](https://github.com/audreyr/cookiecutter) template to create a Terraform infrastructure project.
 
@@ -24,7 +24,11 @@ Install `cookiecutter` command line:
 
 ## Usage
 
+<<<<<<< HEAD
 Generate a new Terraform infrastructure project: `cookiecutter gh:flow-lab/terraform-template` (or if you want to authenticate with ssh: `cookiecutter git+ssh://git@github.com/flow-lab/terraform-template).
+=======
+Generate a new Terraform infrastructure project: `cookiecutter gh:flow-lab/terraform-template` (or if you want to authenticate with ssh: `cookiecutter git+ssh://git@github.com/flow-lab/-template).
+>>>>>>> a439665df21de47b1a972d1a0788ca06cbb2b6a6
 
 You'll be prompted a few questions to help this cookiecutter template to scaffold this project and after its completed you should see a new folder at your current path with the name of the project you gave as input.
 
