@@ -1,8 +1,9 @@
 {
-  "project_name": "name-infra",
+  "project_name": "infra-name",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
   "project_description": "This is a _Terraform_ infrastructure",
-  "aws_region": "eu-north-1",
+  "aws_region": "us-east-2",
+  "aws_version": "3.0",
   "terraform_state_s3": "flowlab-dev-terraform-state",
-  "terraform_version": "0.12.20"
+  "terraform_version": "0.13"
 }
