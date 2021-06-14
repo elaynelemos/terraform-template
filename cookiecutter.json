@@ -4,6 +4,6 @@
   "project_description": "This is a _Terraform_ infrastructure",
   "aws_region": "us-east-2",
   "aws_version": "3.0",
-  "terraform_state_s3": "flowlab-dev-terraform-state",
-  "terraform_version": "0.13"
+  "terraform_state_s3": "{{ cookiecutter.project_slug }}-terraform-state",
+  "terraform_version": "1.0.0"
 }

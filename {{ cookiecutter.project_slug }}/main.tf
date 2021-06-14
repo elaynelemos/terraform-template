@@ -13,5 +13,3 @@ provider "aws" {
   alias  = "{{ cookiecutter.aws_region.replace('-', '_') }}"
   region = "{{ cookiecutter.aws_region }}"
 }
-
-
