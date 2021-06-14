@@ -2,13 +2,14 @@
 
 {{ cookiecutter.project_description }}
 
-Below is a brief explanation of what we have generated for you using [infra template](https://github.com/flow-lab/infra-template):
+Below is a brief explanation of what we have generated for you using [infra template](https://github.com/elaynelemos/terraform-template):
 
 ```shell
 .
 ├── .github                         <-- GitHub Actions for Terraform
 ├── variables.tf                    <-- Terraform variables
 ├── main.tf                         <-- Terraform provider and state
+├── versions.tf                     <-- Terraform versions
 .
 ```
 

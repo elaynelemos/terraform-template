@@ -6,7 +6,7 @@ It is important to note that you should not try to `git clone` this project but 
 
 ## Requirements
 
-Install `cookiecutter` command line: 
+Install `cookiecutter` command line:
 
 **Pip users**:
 
@@ -24,7 +24,7 @@ Install `cookiecutter` command line:
 
 ## Usage
 
-Generate a new Terraform infrastructure project: `cookiecutter gh:flow-lab/terraform-template` (or if you want to authenticate with ssh: `cookiecutter git+ssh://git@github.com/flow-lab/terraform-template).
+Generate a new Terraform infrastructure project: `cookiecutter gh:elaynelemos/terraform-template` (or if you want to authenticate with ssh: `cookiecutter git+ssh://git@github.com/elaynelemos/terraform-template).
 
 You'll be prompted a few questions to help this cookiecutter template to scaffold this project and after its completed you should see a new folder at your current path with the name of the project you gave as input.
 
@@ -37,7 +37,7 @@ $ git remote add origin git@github.com:<github-user>/<project-name>.git
 $ git add . && git commit -m 'Initial commit' && git push origin master
 ```
 
-To update existing project run `cookiecutter gh:flow-lab/terraform-template -f --replay`.
+To update existing project run `cookiecutter gh:elaynelemos/terraform-template -f --replay`.
 
 **NOTE**: After you understand how cookiecutter works (cookiecutter.json, mainly), you can fork this repo and apply your own mechanisms to accelerate your development process and this can be followed for any programming language and OS.
 
@@ -49,6 +49,7 @@ Option | Description
 `project_slug`       | Project slug
 `project_description`| Short project description
 `aws_region`         | The aws region for deployment
+`aws_version`        | The hashicorp/aws provider version
 `terraform_state_s3` | The terraform state s3 bucket
 `terraform_version`  | The version of Terraform
 
