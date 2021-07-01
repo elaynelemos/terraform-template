@@ -1,4 +1,5 @@
 name: Terraform CI
+
 on:
   push:
     branches:
@@ -6,59 +7,101 @@ on:
   pull_request:
     branches:
       - main
+  release:
+    types:
+      - created
 
-env:
-  GITHUB_SHA: {% raw %}${{ github.sha }}{% endraw %}
-  AWS_REGION: us-east-1
-  TERRAFORM_VERSION: 0.15.5
 
 jobs:
   terraform:
-    name: Terraform Lint, Init, Validate and Plan
-    runs-on: ubuntu-latest
+    name: Terraform lint, init, validate and plan
+    runs-on: ubuntu-20.04
+    container: hashicorp/terraform:1.0.1
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
+      - name: Checkout
+        uses: actions/checkout@master
 
-    # Terraform - infra and deploy
-    - name: Terraform Lint
-      uses: hashicorp/terraform-github-actions@master
-      with:
-        tf_actions_version: $TERRAFORM_VERSION
-        tf_actions_subcommand: fmt
-        tf_actions_working_dir: .
-      env:
-        GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+      - name: Lint
+        run: terraform fmt -check -recursive -diff .
 
-    - name: Terraform Init
-      uses: hashicorp/terraform-github-actions@master
-      with:
-        tf_actions_version: $TERRAFORM_VERSION
-        tf_actions_subcommand: init
-        tf_actions_working_dir: .
-      env:
-        GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
-        AWS_ACCESS_KEY_ID: {% raw %}${{ secrets.AWS_ACCESS_KEY_ID }}{% endraw %}
-        AWS_SECRET_ACCESS_KEY: {% raw %}${{ secrets.AWS_SECRET_ACCESS_KEY }}{% endraw %}
-        AWS_DEFAULT_REGION: $AWS_REGION
+      - name: Initialize
+        run: terraform init
 
-    - name: Terraform Validate
-      uses: hashicorp/terraform-github-actions@master
-      with:
-        tf_actions_version: $TERRAFORM_VERSION
-        tf_actions_subcommand: validate
-        tf_actions_working_dir: .
-      env:
-        GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+      - name: Validate
+        run: terraform validate -no-color
 
-    - name: Terraform Plan
-      uses: hashicorp/terraform-github-actions@master
-      with:
-        tf_actions_version: $TERRAFORM_VERSION
-        tf_actions_subcommand: plan
-        tf_actions_working_dir: .
-      env:
-        GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
-        AWS_ACCESS_KEY_ID: {% raw %}${{ secrets.AWS_ACCESS_KEY_ID }}{% endraw %}
-        AWS_SECRET_ACCESS_KEY: {% raw %}${{ secrets.AWS_SECRET_ACCESS_KEY }}{% endraw %}
-        AWS_DEFAULT_REGION: $AWS_REGION
+      - name: Plan
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: terraform plan -out infra.tfplan
+
+
+
+
+
+# name: Terraform CI
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
+
+# env:
+#   GITHUB_SHA: {% raw %}${{ github.sha }}{% endraw %}
+#   AWS_REGION: us-east-1
+#   TERRAFORM_VERSION: 0.15.5
+
+# jobs:
+#   terraform:
+#     name: Terraform Lint, Init, Validate and Plan
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@master
+
+#     # Terraform - infra and deploy
+#     - name: Terraform Lint
+#       uses: hashicorp/terraform-github-actions@master
+#       with:
+#         tf_actions_version: $TERRAFORM_VERSION
+#         tf_actions_subcommand: fmt
+#         tf_actions_working_dir: .
+#       env:
+#         GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+
+#     - name: Terraform Init
+#       uses: hashicorp/terraform-github-actions@master
+#       with:
+#         tf_actions_version: $TERRAFORM_VERSION
+#         tf_actions_subcommand: init
+#         tf_actions_working_dir: .
+#       env:
+#         GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+#         AWS_ACCESS_KEY_ID: {% raw %}${{ secrets.AWS_ACCESS_KEY_ID }}{% endraw %}
+#         AWS_SECRET_ACCESS_KEY: {% raw %}${{ secrets.AWS_SECRET_ACCESS_KEY }}{% endraw %}
+#         AWS_DEFAULT_REGION: $AWS_REGION
+
+#     - name: Terraform Validate
+#       uses: hashicorp/terraform-github-actions@master
+#       with:
+#         tf_actions_version: $TERRAFORM_VERSION
+#         tf_actions_subcommand: validate
+#         tf_actions_working_dir: .
+#       env:
+#         GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+
+#     - name: Terraform Plan
+#       uses: hashicorp/terraform-github-actions@master
+#       with:
+#         tf_actions_version: $TERRAFORM_VERSION
+#         tf_actions_subcommand: plan
+#         tf_actions_working_dir: .
+#       env:
+#         GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+#         AWS_ACCESS_KEY_ID: {% raw %}${{ secrets.AWS_ACCESS_KEY_ID }}{% endraw %}
+#         AWS_SECRET_ACCESS_KEY: {% raw %}${{ secrets.AWS_SECRET_ACCESS_KEY }}{% endraw %}
+#         AWS_DEFAULT_REGION: $AWS_REGION
