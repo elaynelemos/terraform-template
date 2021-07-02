@@ -9,7 +9,6 @@ Below is a brief explanation of what we have generated for you using [infra temp
 ├── .github                         <-- GitHub Actions for Terraform
 ├── variables.tf                    <-- Terraform variables
 ├── main.tf                         <-- Terraform provider and state
-├── versions.tf                     <-- Terraform versions
 .
 ```
 
@@ -24,9 +23,9 @@ Terraform s3 state bucket has to be already created.
 
 ## Deploy
 
-After push to master branch GitHub Action will run [terraform.tf](./github/workflows/terraform.tf) Format, Init, Validate, Plan, and Apply.
+After push to master branch GitHub Action will run [terraform.tf](./github/workflows/terraform.tf) Plan and Apply.
 
-In case there is a new Pull Request created GitHub Actions will run [terraform-pr.yml](./github/workflows/terraform.tf) Format, Init, Validate, and Plan and commment on it what will get changed if merged.
+In case there is a new Pull Request created GitHub Actions will run [terraform-pr.yml](./github/workflows/terraform.tf) Lint, Init, Validate and Plan and commment on it what will get changed if merged.
 
 
 License

@@ -1,8 +1,17 @@
 terraform {
-  backend "http" {}
+  required_version = ">= {{ cookiecutter.terraform_version }}"
 
-  required_providers{
-    "aws" {
+  backend "s3" {
+    bucket = "{{ cookiecutter.terraform_state_s3 }}"
+    key    = "{{ cookiecuter.project_slug }}/terraform.tfstate"
+    region = ""
+
+    dynamodb_table = ""
+    encrypt        = true
+  }
+
+  required_providers {
+    aws = {
       source  = "hashicorp/aws"
       version = "~> {{ cookiecutter.aws_version }}"
     }
@@ -10,6 +19,9 @@ terraform {
 }
 
 provider "aws" {
-  alias  = "{{ cookiecutter.aws_region.replace('-', '_') }}"
   region = "{{ cookiecutter.aws_region }}"
+}
+
+resource "aws_instance" "example" {
+  name = "{{ cookiecuter.project_slug }}"
 }
